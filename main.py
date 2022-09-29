@@ -14,9 +14,9 @@ from fastapi import FastAPI, Form
 app = FastAPI()
 
 @app.post("/compile-sq")
-def hello(name: str = Form()):
+def hello(code: str = Form()):
   with Capturing() as output:
-    result, error = core.run('<index.sq>', name)
+    result, error = core.run('<index.sq>', code)
   
   if error:
     return error.as_string()
